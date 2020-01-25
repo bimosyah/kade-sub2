@@ -1,6 +1,5 @@
 package syahputro.bimo.kade.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +9,11 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import syahputro.bimo.kade.R
 import syahputro.bimo.kade.model.LeagueModel
 import syahputro.bimo.kade.ui.detail.DetailActivity
 
-class MainAdapter(private val context: Context, private val items: List<LeagueModel>) :
+class MainAdapter(private val items: List<LeagueModel>) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,11 +28,7 @@ class MainAdapter(private val context: Context, private val items: List<LeagueMo
             Glide.with(itemView).load(leagueModel.image).into(image)
 
             card.setOnClickListener {
-                val position: Int = getAdapterPosition()
-                Snackbar.make(it, "Click detected on item $position",
-                    Snackbar.LENGTH_LONG).setAction("Action", null).show()
-
-                val intent: Intent = Intent(itemView.context, DetailActivity::class.java)
+                val intent = Intent(itemView.context, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.DATA,adapterPosition)
                 itemView.context.startActivity(intent)
             }

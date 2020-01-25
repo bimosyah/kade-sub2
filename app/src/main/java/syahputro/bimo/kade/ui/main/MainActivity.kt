@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        list.adapter = MainAdapter(this, items)
+        list.adapter = MainAdapter(items)
     }
 
     private fun initData() {
