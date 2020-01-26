@@ -1,6 +1,5 @@
 package syahputro.bimo.kade.ui.main
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,27 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import syahputro.bimo.kade.R
 import syahputro.bimo.kade.model.LeagueModel
-import syahputro.bimo.kade.ui.detail.DetailActivity
 
-class MainAdapter(private val items: List<LeagueModel>) :
+class MainAdapter(private val items: List<LeagueModel>, listener: ItemClickListener) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+
+    val callback:ItemClickListener = listener
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(leagueModel: LeagueModel) {
             val name = itemView.findViewById<TextView>(R.id.tvLeague)
             val image = itemView.findViewById<ImageView>(R.id.ivLeague)
             val kode = itemView.findViewById<TextView>(R.id.tvLeagueCode)
-            val card = itemView.findViewById<CardView>(R.id.cardview)
 
             name.text = leagueModel.name
             kode.text = leagueModel.kode
             Glide.with(itemView).load(leagueModel.image).into(image)
-
-            card.setOnClickListener {
-                val intent = Intent(itemView.context, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.DATA,adapterPosition)
-                itemView.context.startActivity(intent)
-            }
         }
     }
 
@@ -44,7 +37,13 @@ class MainAdapter(private val items: List<LeagueModel>) :
 
     override fun onBindViewHolder(holder: MainAdapter.ViewHolder, position: Int) {
         holder.bind(items[position])
-
+        holder.itemView.setOnClickListener{
+            callback.itemClick(items[position])
+        }
     }
+}
 
+
+interface ItemClickListener {
+    fun itemClick(leagueModel: LeagueModel)
 }

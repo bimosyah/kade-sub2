@@ -1,13 +1,16 @@
 package syahputro.bimo.kade.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import syahputro.bimo.kade.R
 import syahputro.bimo.kade.model.LeagueModel
+import syahputro.bimo.kade.ui.detail.DetailActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemClickListener {
     private var items: MutableList<LeagueModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         initData()
 
         list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        list.adapter = MainAdapter(items)
+        list.adapter = MainAdapter(items,this)
     }
 
     private fun initData() {
@@ -41,5 +44,11 @@ class MainActivity : AppCompatActivity() {
             )
         }
         image.recycle()
+    }
+
+    override fun itemClick(leagueModel: LeagueModel) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.DATA,leagueModel)
+        startActivity(intent)
     }
 }
