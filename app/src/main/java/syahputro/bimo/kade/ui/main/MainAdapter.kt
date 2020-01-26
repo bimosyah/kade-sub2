@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import syahputro.bimo.kade.R
@@ -29,7 +28,7 @@ class MainAdapter(private val items: List<LeagueModel>, listener: ItemClickListe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_list2, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return ViewHolder(v)
     }
 

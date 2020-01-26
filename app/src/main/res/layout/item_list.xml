@@ -1,46 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="125dp"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginBottom="10dp"
-    android:orientation="vertical"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
-    app:cardMaxElevation="4dp"
-    app:cardUseCompatPadding="true">
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        android:padding="16dp">
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        android:layout_marginTop="6dp">
 
-        <ImageView
-            android:id="@+id/ivLeague"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/english_league"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvLeague"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/color3"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivLeague"
-            app:layout_constraintStart_toEndOf="@+id/ivLeague"
-            app:layout_constraintTop_toTopOf="@+id/ivLeague"
-            tools:text="English Premier League" />
+            <ImageView
+                android:id="@+id/ivLeague"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/english_league"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tvLeagueCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:text="EPL"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLeague" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvLeague"
+        android:layout_marginTop="10dp"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="English Premier League"
+        android:textAlignment="center"
+        android:textSize="13sp" />
+</LinearLayout>
